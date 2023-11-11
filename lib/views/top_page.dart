@@ -10,7 +10,7 @@ class TopPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          padding: EdgeInsets.all(16.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
