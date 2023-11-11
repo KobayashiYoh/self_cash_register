@@ -10,11 +10,16 @@ final registrationProvider =
 
 class RegistrationNotifier extends StateNotifier<RegistrationState> {
   RegistrationNotifier() : super(kDefaultRegistrationState) {
+    _setIdController(TextEditingController());
     _setNameController(TextEditingController());
   }
 
   void _setLoading(bool value) {
     state = state.copyWith(isLoading: value);
+  }
+
+  void _setIdController(TextEditingController controller) {
+    state = state.copyWith(idController: controller);
   }
 
   void _setNameController(TextEditingController controller) {
@@ -25,12 +30,10 @@ class RegistrationNotifier extends StateNotifier<RegistrationState> {
     if (state.isLoading) {
       return;
     }
-    print('register');
-    print(state.nameController == null);
     _setLoading(true);
     try {
       await FirestoreRepository.setProduct(
-        id: 'id',
+        id: state.idController!.text,
         name: state.nameController!.text,
       );
     } catch (e) {
@@ -42,6 +45,7 @@ class RegistrationNotifier extends StateNotifier<RegistrationState> {
 
   @override
   void dispose() {
+    state.idController?.dispose();
     state.nameController?.dispose();
     super.dispose();
   }

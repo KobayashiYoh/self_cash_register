@@ -7,13 +7,13 @@ part 'registration_state.freezed.dart';
 class RegistrationState with _$RegistrationState {
   const factory RegistrationState({
     required bool isLoading,
-    required String id,
+    required TextEditingController? idController,
     required TextEditingController? nameController,
   }) = _RegistrationState;
 }
 
 const RegistrationState kDefaultRegistrationState = RegistrationState(
   isLoading: false,
-  id: '',
+  idController: null,
   nameController: null,
 );

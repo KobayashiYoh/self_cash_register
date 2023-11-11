@@ -19,17 +19,32 @@ class RegistrationPage extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextField(
+                controller: state.idController,
+                decoration: const InputDecoration(labelText: '商品ID'),
+              ),
+              TextField(
                 controller: state.nameController,
                 decoration: const InputDecoration(labelText: '商品名'),
               ),
               SizedBox(height: 64.h),
-              SizedBox(
-                height: 0.5.sw,
-                child: TileButton(
-                  onTap: notifier.registerProduct,
-                  iconData: Icons.send,
-                  text: '登録',
-                ),
+              Row(
+                children: [
+                  Expanded(
+                    child: TileButton(
+                      onTap: notifier.registerProduct,
+                      iconData: Icons.barcode_reader,
+                      text: 'ID自動入力',
+                    ),
+                  ),
+                  SizedBox(width: 16.w),
+                  Expanded(
+                    child: TileButton(
+                      onTap: notifier.registerProduct,
+                      iconData: Icons.send,
+                      text: '登録',
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
