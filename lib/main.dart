@@ -5,6 +5,7 @@ import 'package:self_cash_register/firebase_options.dart';
 import 'package:self_cash_register/views/top_page.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

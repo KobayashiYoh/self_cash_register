@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:self_cash_register/views/registration_page.dart';
 import 'package:self_cash_register/widgets/tile_button.dart';
 
 class TopPage extends StatelessWidget {
@@ -27,7 +28,13 @@ class TopPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TileButton(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const RegistrationPage(),
+                          ),
+                        );
+                      },
                       iconData: Icons.cloud_upload,
                       text: '商品登録',
                     ),
